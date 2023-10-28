@@ -108,6 +108,7 @@ sudo apt install -y awscli
 	![](02.png)
 
 ```bash
+sudo apt install -y docker.io
 # Run docker without sudo
 sudo usermod -aG docker $USER
 ```
