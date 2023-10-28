@@ -235,12 +235,23 @@ ENTRYPOINT ["java", "-jar", "/yctech-aws-0.0.1-SNAPSHOT.jar"]
 # Makefile
 .PHONY: build
 build:
-  ./gradlew build
+  ./gradlew bootJar
   docker build . -t xxxx.dkr.ecr.ap-northeast-2.amazonaws.com/yctechaws:latest --platform linux/amd64
 
 push: build
   $$(aws ecr get-login --no-include-email)
   docker push xxxx.dkr.ecr.ap-northeast-2.amazonaws.com/yctechaws:latest
+```
+
+or
+
+```bash
+# Makefile이 안될 시
+./gradlew bootJar
+docker build . -t xxxx.dkr.ecr.ap-northeast-2.amazonaws.com/yctechaws:latest --platform linux/amd64
+
+$(aws ecr get-login --no-include-email)
+docker push xxxx.dkr.ecr.ap-northeast-2.amazonaws.com/yctechaws:latest
 ```
 
 Makefile을 이용하여 이미지를 만들어 봅시다.
